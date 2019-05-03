@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Rock, Paper, Scissors</title>
+</head>
+<body>
+    <header>
+        <nav>
+        </nav>
+
+    </header>
+    <section>
+    </section>
+    <script>
+        let tie=0
+        let win=0
+        let loss=0
+        let roundNumber=0
+
+    const computerSelection = computerPlay();       
+    
+    function computerPlay(array=["Rock","Paper","Scissors"])    {
+    return array[Math.floor(Math.random()*array.length)];
+    }    
+    function playRound(playerSelection,computerSelection){
+                           
+             if ((playerSelection.toLowerCase()=="rock"&&computerSelection=="Scissors")||(playerSelection.toLowerCase()=="paper"&&computerSelection=="Rock")||(playerSelection.toLowerCase()=="scissors"&&computerSelection=="Paper")){
+                console.log(`${playerSelection.toUpperCase()} beats ${computerSelection}, You Win!`);
+                win+=1;
+                roundNumber+=1;
+                console.log(`Round ${roundNumber} Over, Win=${win},Loss=${loss},Tie=${tie}`);                                                
+            } else if ((playerSelection.toLowerCase()=="rock"&&computerSelection=="Paper")||(playerSelection.toLowerCase()=="paper"&&computerSelection=="Scissors")||(playerSelection.toLowerCase()=="scissors"&&computerSelection=="Rock")){
+                console.log(`${computerSelection} beats ${playerSelection.toUpperCase()}, You Lose!`);
+                loss+=1;
+                roundNumber+=1;
+                console.log(`Round ${roundNumber} Over, Win=${win},Loss=${loss},Tie=${tie}`);
+            } else if (playerSelection.toLowerCase()==computerSelection.toLowerCase()){
+                console.log(`${playerSelection.toUpperCase()} equals ${computerSelection}, You Tie!`);
+                tie+=1;
+                roundNumber+=1;
+                console.log(`Round ${roundNumber} Over, Win=${win},Loss=${loss},Tie=${tie}`);
+            } else {
+                console.log(`${playerSelection} is an innvalid selection, try again(Rock,Paper,Scissors)`);
+                              
+            }                   
+        } 
+              
+    function results(){
+        
+        if (win==loss) {
+        console.log(`You tied the computer ${win} to ${loss}`);
+        } else if (win>loss) {
+        console.log(`You beat the computer ${win} to ${loss}`);
+        } else if (win<loss){
+        console.log(`You lost to the computer ${win} to ${loss}`);
+     }
+    }
+    function game()
+        {
+        for(roundNumber== 0; roundNumber < 5;) {
+        let playerSelection = prompt("Rock, Paper, Scissors?");
+        let computerSelection= computerPlay();
+        playRound(playerSelection, computerSelection);
+        }
+        console.log("GAME OVER");
+        results();
+        }  
+
+                                
+    
+    
+
+    </script>
+    <footer>
+        <nav>
+        </nav>
+    </footer>
+</body>
+</html>

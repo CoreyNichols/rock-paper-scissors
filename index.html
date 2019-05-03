@@ -13,41 +13,44 @@
     <section>
     </section>
     <script>
+        //define variables to be counted, and computerSelection variable
         let tie=0
         let win=0
         let loss=0
         let roundNumber=0
-
-    const computerSelection = computerPlay();       
-    
+        const computerSelection = computerPlay();       
+    //generate random input for computer selection
     function computerPlay(array=["Rock","Paper","Scissors"])    {
     return array[Math.floor(Math.random()*array.length)];
     }    
+    //function run per round
     function playRound(playerSelection,computerSelection){
-                           
+                //win scenarios           
              if ((playerSelection.toLowerCase()=="rock"&&computerSelection=="Scissors")||(playerSelection.toLowerCase()=="paper"&&computerSelection=="Rock")||(playerSelection.toLowerCase()=="scissors"&&computerSelection=="Paper")){
                 console.log(`${playerSelection.toUpperCase()} beats ${computerSelection}, You Win!`);
                 win+=1;
                 roundNumber+=1;
-                console.log(`Round ${roundNumber} Over, Win=${win},Loss=${loss},Tie=${tie}`);                                                
+                console.log(`Round ${roundNumber} Over, Win=${win},Loss=${loss},Tie=${tie}`);   
+                //loss scenarios                                             
             } else if ((playerSelection.toLowerCase()=="rock"&&computerSelection=="Paper")||(playerSelection.toLowerCase()=="paper"&&computerSelection=="Scissors")||(playerSelection.toLowerCase()=="scissors"&&computerSelection=="Rock")){
                 console.log(`${computerSelection} beats ${playerSelection.toUpperCase()}, You Lose!`);
                 loss+=1;
                 roundNumber+=1;
                 console.log(`Round ${roundNumber} Over, Win=${win},Loss=${loss},Tie=${tie}`);
+                //tie
             } else if (playerSelection.toLowerCase()==computerSelection.toLowerCase()){
                 console.log(`${playerSelection.toUpperCase()} equals ${computerSelection}, You Tie!`);
                 tie+=1;
                 roundNumber+=1;
                 console.log(`Round ${roundNumber} Over, Win=${win},Loss=${loss},Tie=${tie}`);
+                //invalid input
             } else {
                 console.log(`${playerSelection} is an innvalid selection, try again(Rock,Paper,Scissors)`);
                               
             }                   
         } 
-              
-    function results(){
-        
+     //results to be run once roundNumber is equal to 5 valid rounds         
+    function results(){        
         if (win==loss) {
         console.log(`You tied the computer ${win} to ${loss}`);
         } else if (win>loss) {
@@ -56,6 +59,7 @@
         console.log(`You lost to the computer ${win} to ${loss}`);
      }
     }
+    //runs playRound 5 times, then runs results
     function game()
         {
         for(roundNumber== 0; roundNumber < 5;) {
